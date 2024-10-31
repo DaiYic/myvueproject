@@ -1,23 +1,33 @@
 const reviewList = {
-    template: /*html*/ `
-    <div class="review-container" v-if="reviews.length">
+
+    template:
+        /*html*/
+        `
+    <div class="review-container">
         <h3>Reviews:</h3>
         <ul>
-            <li v-for="(review, index) in reviews" :key="index">
-                {{ review.name }} gave this {{ review.rating }} stars
-                <br/>
-                "{{ review.review }}"
-            </li>
+        <li v-for="(review, index) in reviews" :key="index">
+            {{ review.name }} gave this {{ review.rating }} stars
+            <br/>
+            review:"{{ review.review }}"
+            <br/>
+            answer:"{{ review.question }}"
+            <br/>
+        </li>
         </ul>
-    </div>`,
+    </div>
+        `
+    ,
     props: {
         reviews: {
             type: Array
         }
     },
-    setup(props) {
+    setup(props){
+        const reviews = props.reviews
         return {
-            reviews: props.reviews
-        };
+            reviews
+        }
     }
-};
+}
+    
